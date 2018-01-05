@@ -5,7 +5,8 @@ EAPI=6
 
 DESCRIPTION="Virtual for curses"
 SLOT="0"
+IUSE="unicode"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
 
-RDEPEND="|| ( sys-libs/ncurses
+RDEPEND="|| ( sys-libs/ncurses:0=[unicode?]
 			sys-libs/netbsd-curses )"
