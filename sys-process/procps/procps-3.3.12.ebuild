@@ -12,13 +12,13 @@ SRC_URI="mirror://sourceforge/${PN}-ng/${PN}-ng-${PV}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0/5" # libprocps.so
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
-IUSE="+kill +ncurses modern-top nls selinux static-libs systemd test unicode"
+IUSE="+kill +curses modern-top nls selinux static-libs systemd test unicode"
 
-RDEPEND="ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unicode?] )
+RDEPEND="curses? ( virtual/curses:0=[unicode?] )
 	selinux? ( sys-libs/libselinux )
 	systemd? ( >=sys-apps/systemd-209 )"
 DEPEND="${RDEPEND}
-	ncurses? ( virtual/pkgconfig )
+	curses? ( virtual/pkgconfig )
 	systemd? ( virtual/pkgconfig )
 	test? ( dev-util/dejagnu )"
 RDEPEND+="
@@ -51,7 +51,7 @@ src_configure() {
 		--docdir='$(datarootdir)'/doc/${PF} \
 		$(use_enable kill) \
 		$(use_enable modern-top) \
-		$(use_with ncurses) \
+		$(use_with curses) \
 		$(use_enable nls) \
 		$(use_enable selinux libselinux) \
 		$(use_enable static-libs static) \
