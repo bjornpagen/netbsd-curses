@@ -24,10 +24,8 @@ DEPEND="${RDEPEND}
 	doc? ( dev-python/docutils )"
 RDEPEND="${RDEPEND}
 	sys-apps/file
-	|| (
-		sys-libs/ncurses:0
-		sys-libs/netbsd-curses:0
-	)"
+	virtual/curses:0
+	"
 
 PDEPEND="emacs? ( app-emacs/eselect-mode )
 	vim-syntax? ( app-vim/eselect-syntax )"

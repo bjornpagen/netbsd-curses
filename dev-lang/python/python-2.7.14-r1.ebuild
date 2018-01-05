@@ -17,7 +17,7 @@ SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
 LICENSE="PSF-2"
 SLOT="2.7"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="-berkdb build doc elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk +wide-unicode wininst +xml"
+IUSE="-berkdb build doc elibc_uclibc examples gdbm hardened ipv6 libressl +curses +readline sqlite +ssl +threads tk +wide-unicode wininst +xml"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
 # If you need to apply a patch which requires python for bootstrapping, please
@@ -42,11 +42,8 @@ RDEPEND="app-arch/bzip2:0=
 		sys-libs/db:4.2
 	) )
 	gdbm? ( sys-libs/gdbm:0=[berkdb] )
-	ncurses? (
-		|| (
-			>=sys-libs/ncurses-5.2:0=
-			sys-libs/netbsd-curses:0=
-		)
+	curses? (
+		virtual/curses:0=
 		readline? ( >=sys-libs/readline-4.1:0= )
 	)
 	sqlite? ( >=dev-db/sqlite-3.3.8:3= )
@@ -129,7 +126,7 @@ src_configure() {
 		use berkdb   || use gdbm || disable+=" dbm"
 		use berkdb   || disable+=" _bsddb"
 		use gdbm     || disable+=" gdbm"
-		use ncurses  || disable+=" _curses _curses_panel"
+		use curses   || disable+=" _curses _curses_panel"
 		use readline || disable+=" readline"
 		use sqlite   || disable+=" _sqlite3"
 		use ssl      || export PYTHON_DISABLE_SSL="1"

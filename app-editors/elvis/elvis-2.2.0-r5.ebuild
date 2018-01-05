@@ -17,10 +17,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~ppc-macos ~x86-macos ~m68k-mint ~sparc-solari
 IUSE="X"
 
 RDEPEND="
-	|| (
-		sys-libs/ncurses:0=
-		sys-libs/netbsd-curses:0=
-	)
+	virtual/curses:0=
 	app-eselect/eselect-vi
 	X? (
 		>=x11-proto/xproto-7.0.4

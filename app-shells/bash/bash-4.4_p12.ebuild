@@ -50,10 +50,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh spa
 IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
 
 DEPEND="
-	|| (
-		>=sys-libs/ncurses-5.2-r2:0=
-		sys-libs/netbsd-curses:0=
-	)
+	virtual/curses:0=
 	readline? ( >=sys-libs/readline-${READLINE_VER}:0= )
 	nls? ( virtual/libintl )"
 RDEPEND="${DEPEND}
