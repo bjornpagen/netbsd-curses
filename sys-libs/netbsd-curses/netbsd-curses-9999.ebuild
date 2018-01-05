@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit git-r3 multilib-minimal eutils
+inherit git-r3 multilib-minimal
 
 DESCRIPTION="netbsd-libcurses portable edition"
 HOMEPAGE="https://github.com/sabotage-linux/netbsd-curses"
