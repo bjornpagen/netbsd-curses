@@ -138,8 +138,6 @@ multilib_src_configure() {
 		$(multilib_native_use_with slang)
 		$(multilib_native_use_with systemd)
 		$(multilib_native_use_with udev)
-		$(multilib_native_usex curses "$(use_with unicode ncursesw)" '--without-ncursesw')
-		$(multilib_native_usex curses "$(use_with !unicode ncurses)" '--without-ncurses')
 		$(tc-has-tls || echo --disable-tls)
 		$(use_enable unicode widechar)
 		$(use_enable kill)
