@@ -27,6 +27,6 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" $(usex static-libs install install-dynlibs)
+	emake PREFIX="${EPREFIX}" DESTDIR="${D}" $(usex static-libs install install-dynlibs)
 	dodoc README.md
 }
