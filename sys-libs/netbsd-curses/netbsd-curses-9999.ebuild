@@ -26,7 +26,7 @@ src_compile() {
 	default
 }
 
-multilib_src_install() {
+src_install() {
 	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install-headers $(usex static-libs install install-dynlibs)
 	dodoc README.md
 }
