@@ -23,10 +23,10 @@ multilib_src_compile() {
 	tc-export AR CC RANLIB
 	local BUILD_CC
 	tc-export_build_env BUILD_CC
-	emake DESTDIR="${D}" all$(usex static-libs "" -dynamic)
+	default
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" install
+	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" $(usex static-libs install install-dynlibs)
 	dodoc README.md
 }
