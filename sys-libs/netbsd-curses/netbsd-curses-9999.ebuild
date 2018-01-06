@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit git-r3 toolchain-funcs multilib-minimal
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="netbsd-libcurses portable edition"
 HOMEPAGE="https://github.com/sabotage-linux/netbsd-curses"
@@ -19,14 +19,14 @@ RDEPEND="!sys-libs/ncurses"
 DEPEND="${RDEPEND}
 	sys-devel/make"
 
-multilib_src_compile() {
+src_compile() {
 	tc-export AR CC RANLIB
 	local BUILD_CC
 	tc-export_build_env BUILD_CC
 	default
 }
 
-multilib_src_install() {
+src_install() {
 	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" $(usex static-libs install install-dynlibs)
 	dodoc README.md
 }
