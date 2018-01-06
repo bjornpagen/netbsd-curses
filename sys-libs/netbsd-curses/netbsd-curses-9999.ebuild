@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit git-r3 toolchain-funcs
+inherit git-r3 toolchain-funcs multilib-minimal
 
 DESCRIPTION="netbsd-libcurses portable edition"
 HOMEPAGE="https://github.com/sabotage-linux/netbsd-curses"
@@ -26,7 +26,7 @@ src_compile() {
 	default
 }
 
-src_install() {
+multilib_src_install() {
 	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install-headers $(usex static-libs install install-dynlibs)
 	dodoc README.md
 }
