@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/sabotage-linux/netbsd-curses"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="static-libs"
+IUSE="+doc static-libs"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="!sys-libs/ncurses"
@@ -27,9 +27,15 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install-manpages $(usex static-libs install install-dynlibs)
+	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" \
+		$(usex static-libs install install-dynlibs) \
+		$(usex doc install-manpages "")
+
 	dodoc README.md
 
-	# fix file collision with attr
-	rm "${ED%/}/usr/share/man/man3/attr_get.3" || die
+	# fix file collisions with attr
+	if use doc; then;
+		rm "${ED%/}/usr/share/man/man3/attr_get.3" || die
+		rm "${ED%/}/usr/share/man/man3/attr_set.3" || die
+	fi
 }
