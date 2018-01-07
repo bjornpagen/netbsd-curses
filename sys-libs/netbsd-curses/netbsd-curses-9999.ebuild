@@ -29,4 +29,7 @@ src_compile() {
 src_install() {
 	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install-manpages $(usex static-libs install install-dynlibs)
 	dodoc README.md
+
+	# fix file collision with attr
+	rm "${ED%/}/usr/share/man/man3/attr_get.3.bz2" || die
 }
