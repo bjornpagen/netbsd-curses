@@ -34,7 +34,7 @@ src_install() {
 	dodoc README.md
 
 	# fix file collisions with attr
-	if use doc; then;
+	if use doc; then
 		rm "${ED%/}/usr/share/man/man3/attr_get.3" || die
 		rm "${ED%/}/usr/share/man/man3/attr_set.3" || die
 	fi
